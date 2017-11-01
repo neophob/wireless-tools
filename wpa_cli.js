@@ -212,7 +212,7 @@ function parse_scan_results(block) {
             parsed.signalLevel = parseInt(match[1], 10);
         }
 
-        if ((match = entry.match(/\t(\[.+\])\t/))) {
+        if ((match = entry.match(/\t(\[.+\])\t?/))) {
             parsed.flags = match[1];
         }
 
@@ -242,7 +242,7 @@ function parse_scan_results_interface(callback) {
         if (error) {
             callback(error);
         } else {
-            callback(error, parse_scan_results(stdout.trim()));
+            callback(error, parse_scan_results(stdout));
         }
     };
 }
